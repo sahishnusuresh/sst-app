@@ -11,6 +11,8 @@ export function ApiStack({stack,app}){
             permissions: [table],
             environment: {
               TABLE_NAME: table.tableName,
+              STRIPE_SECRET_KEY:process.env.STRIPE_SECRET_KEY,
+
             },
           },
         },

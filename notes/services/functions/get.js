@@ -3,8 +3,9 @@ import dynamoDb from "../utils/dynamodb";
 export const main =handler(async(event)=>{
     const params={
         TableName:process.env.TABLE_NAME,
+
         Key:{
-            userId:"1",
+            userId:event.requestContext.authorizer.iam.cognitoIdentity.identityId,
             noteId:event.pathParameters.id
         }
     }

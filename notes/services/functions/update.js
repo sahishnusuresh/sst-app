@@ -4,8 +4,9 @@ export const main=handler(async(event)=>{
     const data=JSON.parse(event.body)
     const params={
         TableName:process.env.TABLE_NAME,
+
         Key:{
-            userId:"1",
+            userId:event.requestContext.authorizer.iam.cognitoIdentity.identityId,
             noteId:event.pathParameters.id
         },
         UpdateExpression:"SET content=:content,attachment=:attachment",
